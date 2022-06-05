@@ -39,7 +39,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect('/');
         } else {
-            view('login', ['invalidCredentials' => true]);
+           return view('login', ['invalidCredentials' => true]);
         }
     }
 
