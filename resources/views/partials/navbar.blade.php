@@ -12,16 +12,42 @@
           <li class="nav-item">
             <a class="nav-link" href="/">Teams</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/create">Create</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
-          </li>
         </ul>
         <span class="navbar-text">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          <ul class="nav justify-content-center">
+
+{{-- // autentikacije korisnika --}}
+            @auth
+            <li class="nav-item ms-auto">
+              <span class=" nav-link text-danger"><span class="text-white me-3" >Welcome</span> {{auth()->user()->first_name}} {{auth()->user()->last_name}}
+            </li>
+            <li class="nav-item">
+              <form method="POST" action="/logout" >
+                @csrf
+                <button type="submit" class="btn btn-link">Logout</button>
+        </form>
+          </li>
+            @endauth
+
+            {{-- // ruta vidljiva neulogovanom korisnika --}}
+            @guest
+
+            <li class="nav-item">
+                <a class="nav-link" href="/login">login</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/register">register</a>
+              </li>
+
+              @endguest
+
+
+          </ul>
         </span>
       </div>
     </div>
   </nav>
+
+
+
+

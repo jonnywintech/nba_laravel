@@ -13,11 +13,4 @@
 </div>
 </div>
 
-
-
-
-
-
-
-
 @endsection

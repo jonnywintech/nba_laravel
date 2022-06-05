@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PlayerController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +20,14 @@ use App\Http\Controllers\PlayerController;
 Route::get('/', [TeamController::class, 'index']);
 Route::get('/team/{id}', [TeamController::class, 'show']);
 Route::get('/player/{id}', [PlayerController::class, 'show']);
+
+// register
+Route::get('/register', [AuthController::class, 'getRegisterForm']);
+Route::post('/register', [AuthController::class, 'register']);
+
+//login
+Route::get('/login', [AuthController::class, 'getLoginForm']);
+Route::post('/login', [AuthController::class, 'login']);
+
+//logout
+Route::post('/logout', [AuthController::class, 'logout']);
