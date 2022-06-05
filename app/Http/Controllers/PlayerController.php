@@ -11,6 +11,7 @@ class PlayerController extends Controller
     {
         $player = Player::findOrFail($id);
         $team= $player->team;
+        $team->load('comments.user');
         return view('player', compact('player','team'));
     }
 

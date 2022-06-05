@@ -8,6 +8,12 @@
     <div class="col-6 mx-auto">
 <form method="POST" action="/login">
     @csrf
+    @if (isset($invalidCredentials) && $invalidCredentials == true)
+    <div>
+        <span class="text-danger fs-2">Invalid email or password!</span>
+    </div>
+    <br>
+@endif
     <!-- Email input -->
     <div class="form-outline mb-4">
       <input type="email" id="form1Example1" name="email" value="{{old('email')}}" class="form-control" />
@@ -43,12 +49,7 @@
     <!-- Submit button -->
     <button type="submit" class="btn btn-primary btn-block">Sign in</button>
 
-    @if (isset($invalidCredentials) && $invalidCredentials == true)
-    <div>
-        <span class="text-dange">Invalid email or password!</span>
-    </div>
-    <br>
-@endif
+
   </form>
 </div>
 </div>

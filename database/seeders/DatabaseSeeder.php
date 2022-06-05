@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use App\Models\Team;
 use App\Models\Player;
 use Illuminate\Database\Seeder;
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
 
         Team::factory(10)->create();
         Player::factory(100)->create();
+        Comment::factory(100)->create();
 
 
     }

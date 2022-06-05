@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PlayerController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::get('/', [TeamController::class, 'index']);
     Route::get('/team/{id}', [TeamController::class, 'show']);
     Route::get('/player/{id}', [PlayerController::class, 'show']);
+    Route::post('/team/{team}/comments', [CommentController::class, 'store'])->name('createComment');
     //logout
     Route::post('/logout', [AuthController::class, 'logout']);
 });
