@@ -26,6 +26,7 @@ class CommentController extends Controller
         $comment->user()->associate(auth()->user());
         $comment->team()->associate($team);
         $comment->save();
+        Mail::to($team)->send(new CommentReceived($comment));
         return back();
     }
 }
