@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,9 @@ Route::group(['middleware'=> 'verified'], function(){
     Route::get('/team/{id}', [TeamController::class, 'show']);
     Route::get('/player/{id}', [PlayerController::class, 'show']);
     Route::post('/team/{team}/comments', [CommentController::class, 'store'])->name('createComment');
+    Route::get('/news', [NewsController::class, 'index'])->name('show_news');
+    Route::get('/news/{id}', [NewsController::class, 'show'])->name('show_news_id');
+
 });
 
 Route::group([

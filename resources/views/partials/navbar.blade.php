@@ -12,6 +12,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/">Teams</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/news">News</a>
+          </li>
         </ul>
         <span class="navbar-text">
           <ul class="nav justify-content-center">
