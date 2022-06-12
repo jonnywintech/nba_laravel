@@ -1,3 +1,3 @@
 @error($field)
-<span class="text-danger">{{$message}}</span>
+<span class="text-light bg-danger">{{$message}}</span>
 @enderror

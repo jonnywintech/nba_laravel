@@ -33,10 +33,10 @@
             @guest
 
             <li class="nav-item">
-                <a class="nav-link" href="/login">login</a>
+                <a class="nav-link" href="/login">Login</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/register">register</a>
+                  <a class="nav-link" href="/register">Register</a>
               </li>
 
               @endguest

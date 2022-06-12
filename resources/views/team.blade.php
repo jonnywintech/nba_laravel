@@ -44,6 +44,11 @@
           <label class="form-label" for="form4Example3">Message</label>
         </div>
 
+        {{-- error message --}}
+
+     <div class="my-4">
+        @include('partials.error-message', [ 'field' => 'content' ])
+     </div>
 
 
         <!-- Submit button -->
