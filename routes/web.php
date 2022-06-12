@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,19 +19,27 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-Route::group(['middleware'=> 'auth'], function(){
+Route::group(['middleware'=> 'verified'], function(){
     Route::get('/', [TeamController::class, 'index']);
     Route::get('/team/{id}', [TeamController::class, 'show']);
     Route::get('/player/{id}', [PlayerController::class, 'show']);
     Route::post('/team/{team}/comments', [CommentController::class, 'store'])->name('createComment');
-    //logout
-    Route::post('/logout', [AuthController::class, 'logout']);
 });
+
+Route::group([
+    'middleware' => 'auth'
+], function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/email/verify', [AuthController::class, 'getEmailVerificationNotice'])->name('verification.notice');
+    Route::get('/verify/{id}', [UserController::class, 'store']);
+});
+
+
+
 
 Route::group(['middleware'=> 'guest'], function () {
 
-
-// register
+    // register
 Route::get('/register', [AuthController::class, 'getRegisterForm']);
 Route::post('/register', [AuthController::class, 'register']);
 

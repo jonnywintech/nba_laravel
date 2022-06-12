@@ -6,13 +6,15 @@ use App\Models\Team;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCommentRequest;
+use App\Mail\CommentReceived;
+use Illuminate\Support\Facades\Mail;
 
 class CommentController extends Controller
 {
 
     public function __construct()
     {
-      $this->middleware('auth');
+      $this->middleware(['auth', 'verified']);
     }
 
     public function store(Team $team, CreateCommentRequest $request)
