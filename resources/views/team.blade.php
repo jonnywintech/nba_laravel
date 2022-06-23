@@ -9,6 +9,14 @@
     <h1 class="my-2">{{ $team->name }}</h1>
     <h2 class="my-2">{{ $team->email }}</h2>
     <h3 class="my-2">{{ $team->address }}, {{ $team->city }}</h3>
+
+            <div class="container">
+                <h2>news about team</h2>
+
+            </div>
+
+
+
 <h4>List of All Players</h4>
 
 

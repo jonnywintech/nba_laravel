@@ -6,6 +6,7 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\News;
 
 class TeamController extends Controller
 {
@@ -20,6 +21,7 @@ class TeamController extends Controller
         $team = Team::findOrFail($id);
         $players = $team->players;
         $comments = $team->comments;
+        // dd($team);
         return view('team', compact('team', 'players', 'comments'));
     }
 
