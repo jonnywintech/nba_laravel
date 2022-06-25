@@ -24,6 +24,10 @@
   <body>
       @include('partials.navbar')
    <div class="main">
+    @if(session('status_message'))
+    <div class="alert alert-info">{{session('status_message')}}</div>
+    <br />
+    @endif
    @yield('content')
    @include('partials.footer')
    </div>

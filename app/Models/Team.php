@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Comment;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
@@ -15,7 +14,8 @@ class Team extends Model
         return $this->hasMany(Player::class);
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
@@ -23,6 +23,4 @@ class Team extends Model
     {
         return $this->belongsToMany(News::class, 'news_teams');
     }
-
- protected $guarded = [];
 }

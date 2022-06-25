@@ -33,10 +33,10 @@ class DatabaseSeeder extends Seeder
         Comment::factory(100)->create();
         News::factory(100)->create();
 
-        foreach(Team::all() as $team){
-            $news = \App\Models\News::inRandomOrder()->take(rand(1,3))->pluck('id');
-            $team->news()->attach($news);
-        }
+        // foreach(Team::all() as $team){
+        //     $news = \App\Models\News::inRandomOrder()->take(rand(1,3))->pluck('id');
+        //     $team->news()->attach($news);
+        // }
 
     }
 }

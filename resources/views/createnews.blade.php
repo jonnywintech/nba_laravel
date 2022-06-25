@@ -1,35 +1,39 @@
 @extends('layout.home')
-@section('title', 'Register')
+@section('title', 'Publish article')
 
 @section('content')
-<div class="container mx-auto px-2">
-<h1 class="my-4 text-center">Register new Account</h1>
-<div class="row">
-    <div class="col-6 mx-auto">
-
-            <h1>Create a news article: </h1>
-            <br>
-            <form method="POST" action="/create/news">
-                @csrf
-                <input type="text" placeholder="Title" name="title" value={{ old('title') }}>
-                <br>
-                <textarea name="content" placeholder="Write something ..." cols="30" rows="10">
-                    {{ old('content') }}
-                </textarea>
-                <br>
-                <div>
-                    Select teams:
-                    @foreach ($teams as $team)
-                        <input type="checkbox" name="teams[]" id="team-{{ $team->id }}" value="{{ $team->id }}">
-                        <label for="team-{{ $team->id }}">{{ $team->name }}</label>
-                    @endforeach
-                </div>
-                <br>
-                <button type="submit">Submit</button>
-            </form>
+<div class="container py-5 my-5">
+<form action="/news" method="POST">
+    @csrf
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" aria-describedby="titleHelp" placeholder="Enter title" name="title">
+        @error('title')
+        <div class="alert alert-danger">{{$message}}</div>
+        @enderror
     </div>
-</div>
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea class="form-control @error('content') is-invalid @enderror" id="content" rows="5" name="content"></textarea>
+        @error('content')
+        <div class="alert alert-danger">{{$message}}</div>
+        @enderror
+    </div>
 
-</div>
+    <div>
+        <label>Select teams:</label>
+        @foreach($teams as $team)
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="team-{{$team->id}}" autocomplete="off" name="teams[]" value="{{$team->id}}">
+            <label class="form-check-label" for="team-{{$team->id}}">{{$team->name}}</label>
+        </div>
+        @endforeach
+        @error('teams')
+        <div class="alert alert-danger">{{$message}}</div>
+        @enderror
+    </div>
 
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
 @endsection

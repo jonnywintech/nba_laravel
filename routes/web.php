@@ -26,8 +26,9 @@ Route::group(['middleware'=> 'verified'], function(){
     Route::get('/player/{id}', [PlayerController::class, 'show']);
     Route::post('/team/{team}/comments', [CommentController::class, 'store'])->name('createComment');
     Route::get('/news', [NewsController::class, 'index'])->name('show_news');
+    Route::get('/news/create', [NewsController::class, 'create']);
+    Route::post('/news', [NewsController::class, 'store']);
     Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');;
-    Route::get('/news/{id}', [NewsController::class, 'show'])->name('show_news_id');
     Route::get('/news/team/{teamName}', [NewsController::class, 'getNewsByTeam'])->name('newsForTeam');
 
 });

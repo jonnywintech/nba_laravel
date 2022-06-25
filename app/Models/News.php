@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use App\Models\Team;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'content'];
 
     public function user()
     {
@@ -20,10 +20,4 @@ class News extends Model
     {
         return $this->belongsToMany(Team::class, 'news_teams');
     }
-
-    protected $fillable = [
-        'title',
-        'content',
-        'user_id',
-    ];
 }
