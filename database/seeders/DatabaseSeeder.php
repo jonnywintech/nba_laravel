@@ -4,11 +4,12 @@ namespace Database\Seeders;
 
 use App\Models\News;
 use App\Models\Team;
+use App\Models\User;
 use App\Models\Player;
 use App\Models\Comment;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -26,6 +27,8 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'Pera',
             'last_name' => 'Peric',
             'email' => 'pera@p.com',
+            'password' => Hash::make('password'),
+            'is_verified' => true,
         ]);
 
         Team::factory(10)->create();
@@ -33,10 +36,9 @@ class DatabaseSeeder extends Seeder
         Comment::factory(100)->create();
         News::factory(100)->create();
 
-        foreach(Team::all() as $team){
-            $news = \App\Models\News::inRandomOrder()->take(rand(1,100))->pluck('id');
+        foreach (Team::all() as $team) {
+            $news = \App\Models\News::inRandomOrder()->take(rand(1, 100))->pluck('id');
             $team->news()->attach($news);
         }
-
     }
 }
